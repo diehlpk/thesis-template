@@ -149,6 +149,13 @@ Change Appearance of Chapter Headings
 
 Edit `preambel/chapterheads.tex`.
 
+Add the title page of the mathematics department of the university of Bonn
+--------------------------------------------------------------------------
+
+1. Run make fetchtitlebonn
+2. Uncomment %\usepackage{BA_Titelseite} and all informations, e.g title.
+3. Uncomment %\maketitle
+
 Final version
 -------------
 
@@ -181,12 +188,6 @@ The Makefile.
 ### README.md
 
 This file.
-
-## Diplomtitle
-
-### diplomtitle/diplomtitel.sty
-
-Style file for the cover sheet of the document.
 
 ## Bibliography
 

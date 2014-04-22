@@ -154,3 +154,8 @@ fetchstys: tabulary.sty algorithm.sty lmodern.sty microtype.sty todonotes.sty
 html: clean pdf
 	rm $(AUX)
 	htlatex $(SRC)
+#Fügt den Style für die Titelseite ein
+fetchtitlebonn:
+	wget http://www.mathematics.uni-bonn.de/files/bachelor/ba_titelseite.zip
+	unzip -p ba_titelseite.zip BA_Titelseite/BA_Titelseite.sty > BA_Titelseite.sty
+
