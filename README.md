@@ -3,9 +3,9 @@ About
 
 Unoffical LaTeX template for Master, Bachelor, Diploma, and Student Theses at the University of Stuttgart, Computer Science.
 
-More information at https://github.com/latextemplates/uni-stuttgart-computer-science-template.
+More information at https://github.com/diehlpk/thesis-template
 
-It originates from the studiforge server at https://vorlagen.studiforge.informatik.uni-stuttgart.de/trac/
+It originates from https://github.com/latextemplates/uni-stuttgart-computer-science-template
 
 Characteristics
 ---------------
