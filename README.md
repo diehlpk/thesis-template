@@ -21,15 +21,13 @@ Using with your git repository
 Initialization
 --------------
 This howto assumes that you have not a git repository for your thesis.
-If you have, just add https://github.com/latextemplates/USTUTT-computer-science.git as upstream and merge the branch "template" into your "master" branch.
+If you have, just add https://github.com/diehlpk/thesis-template.git as upstream and merge the branch "template" into your "master" branch.
 
 1. Open command line
-1. git clone https://github.com/latextemplates/USTUTT-computer-science.git
-1. cd USTUTT-computer-science
+1. git clone https://github.com/diehlpk/thesis-template.git
+1. cd thesis-template
 1. git remote rename origin github
 1. git checkout -b master
-1. git submodule init
-1. git submodule update
 
 Now, you are on the master branch, where you can write your thesis and push it to your (remote) origin repository, in case you have one.
 
@@ -39,7 +37,6 @@ If you want to merge updates from github, do the following:
 
 1. git fetch github
 1. git merge github/template
-1. git submodule update
 
 LaTeX compilation
 =================
@@ -145,7 +142,6 @@ Two steps to switch to English typesetting:
 
 1. `ausarbeitung.tex`: Right on top: remove the `%` before `pointlessnumbers` (line 17)
 1. `ausarbeitung.tex`: Exchange commands `\ifdeutsch` and `\ifenglisch`. (Lines 23,23 <-> 27,28).
-1. `preambel/packages_and_options.tex` at `usepackage` of `uni-stuttgart-cs-cover`: disabled `language=german` and enable `language=english`. (Lines 448 and 449)
 1. Cleanup everything (e.g., `make clean`). Otherwise pdflatex will complain because of `ngerman`.
 
 Change Appearance of Chapter Headings
