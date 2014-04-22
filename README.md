@@ -1,7 +1,7 @@
 About
 =====
 
-Unoffical LaTeX template for Master, Bachelor, Diploma, and Student Theses at the University of Stuttgart, Computer Science.
+LaTeX template for Master, Bachelor, Diploma, and Student Thesis with exmaples for algorithms, equations, figures, tables and bibliography.
 
 More information at https://github.com/diehlpk/thesis-template
 
