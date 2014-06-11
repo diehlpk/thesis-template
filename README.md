@@ -153,8 +153,8 @@ Add the title page of the mathematics department of the university of Bonn
 --------------------------------------------------------------------------
 
 1. Run make fetchtitlebonn
-2. Uncomment %\usepackage{BA_Titelseite} and all informations, e.g title.
-3. Uncomment %\maketitle
+2. Uncomment %\input{titlePageBonn}
+3. Comment \input{titlePage}
 
 Final version
 -------------
