@@ -44,7 +44,10 @@
 \usepackage[hyperref,dvipsnames]{xcolor}
 %
 
-
+%%%
+%Biblatex
+\usepackage[style=alphabetic,backref=true,backend=biber]{biblatex}
+%
 
 %%%
 % Neue deutsche Rechtschreibung und Literatur statt "Literature", Nachfolger von ngerman.sty
@@ -605,32 +608,32 @@ inkscape -z -D --file=\getgraphicspath#1.svg %
 
 %%%
 % Rueckverweise aus dem Literaturverzeichnis
-\usepackage[hyperpageref]{backref}
-\ifdeutsch
+%\usepackage[hyperpageref]{backref}
+%\ifdeutsch
 % Deutscher Text
-\newcommand{\babelbackrefnotcited}{\relax}
-\newcommand{\babelbackrefcitedsingle}[1]{(Zitiert auf Seite~#1)}
-\newcommand{\babelbackrefcitedmulti}[1]{(Zitiert auf den Seiten~#1)}
-\newcommand{\babelbackrefand}{und}
-\else
+%\newcommand{\babelbackrefnotcited}{\relax}
+%\newcommand{\babelbackrefcitedsingle}[1]{(Zitiert auf Seite~#1)}
+%\newcommand{\babelbackrefcitedmulti}[1]{(Zitiert auf den Seiten~#1)}
+%\newcommand{\babelbackrefand}{und}
+%\else
 % Englischer Text
-\newcommand{\babelbackrefnotcited}{\relax}
-\newcommand{\babelbackrefcitedsingle}[1]{(Cited on page~#1)}
-\newcommand{\babelbackrefcitedmulti}[1]{(Cited on pages~#1)}
-\newcommand{\babelbackrefand}{and}
-\fi
+%\newcommand{\babelbackrefnotcited}{\relax}
+%\newcommand{\babelbackrefcitedsingle}[1]{(Cited on page~#1)}
+%\newcommand{\babelbackrefcitedmulti}[1]{(Cited on pages~#1)}
+%\newcommand{\babelbackrefand}{and}
+%\fi
 % Tweak backref
-\renewcommand{\backreftwosep}{ \babelbackrefand~} % seperate 2 pages
-\renewcommand{\backreflastsep}{ \babelbackrefand~} % seperate last of longer list
-\renewcommand*{\backref}[1]{} % Standard deaktivieren
-\renewcommand*{\backrefalt}[4]{% 
-\ifcase #1 %
-\babelbackrefnotcited%
-\or
-\babelbackrefcitedsingle{#2}%
-\else
-\babelbackrefcitedmulti{#2}%
-\fi}
+%\renewcommand{\backreftwosep}{ \babelbackrefand~} % seperate 2 pages
+%\renewcommand{\backreflastsep}{ \babelbackrefand~} % seperate last of %longer list
+%\renewcommand*{\backref}[1]{} % Standard deaktivieren
+%\renewcommand*{\backrefalt}[4]{% 
+%\ifcase #1 %
+%\babelbackrefnotcited%
+%\or
+%\babelbackrefcitedsingle{#2}%
+%\else
+%\babelbackrefcitedmulti{#2}%
+%\fi}
 %
 %%%
 

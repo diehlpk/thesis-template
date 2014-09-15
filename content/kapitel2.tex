@@ -51,7 +51,7 @@ Listing~\ref{lst:ListingANDlstlisting} zeigt, wie man Programmlistings einbindet
 \label{lst:ListingANDlstlisting}
 \end{Listing}
 
-Quellcode im \lstinline|<listing />| ist auch möglich.
+Quellcode im \lstinline|<listing>| ist auch möglich.
 
 \section{Abbildungen}
 Die Abbildungen~\ref{fig:chor1} und~\ref{fig:chor2} sind für das Verständnis dieses Dokuments
@@ -76,7 +76,7 @@ wichtig. Im Anhang zeigt Abbildung~\vref{fig:AnhangsChor} erneut die komplette C
   \end{center}
 \end{figure}
 
-Das SVG in \cref{fig:directSVG} ist direkt eingebunden, während der Text im SVG in \cref{fig:latexSVG} mittels pdflatex gesetzt ist.
+Das SVG in \cref{fig:directsvg} ist direkt eingebunden, während der Text im SVG in \cref{fig:latexsvg} mittels pdflatex gesetzt ist.
 \todo{Falls man die Graphiken sehen möchte, muss inkscape im PATH sein und im Tex-Quelltext \texttt{\textbackslash{}iffalse} und \texttt{\textbackslash{}iftrue} auskommentiert sein.}
 
 \iffalse % <-- Das hier wegnehmen, falls inkscape im Pfad ist
@@ -84,7 +84,7 @@ Das SVG in \cref{fig:directSVG} ist direkt eingebunden, während der Text im SVG
 \centering
 \includegraphics{svgexample.svg}
 \caption{SVG direkt eingebunden}
-\label{fig:directSVG}
+\label{fig:directsvg}
 \end{figure}
 
 \begin{figure}
@@ -92,7 +92,7 @@ Das SVG in \cref{fig:directSVG} ist direkt eingebunden, während der Text im SVG
 \def\svgwidth{.4\textwidth}
 \includesvg{svgexample}
 \caption{Text im SVG mittels \LaTeX{} gesetzt}
-\label{fig:latexSVG}
+\label{fig:latexsvg}
 \end{figure}
 \fi % <-- Das hier wegnehmen, falls inkscape im Pfad ist
 
@@ -118,8 +118,8 @@ Tabelle~\ref{tab:Ergebnisse} zeigt Ergebnisse.
 \section{Pseudocode}
 Algorithmus~\vref{alg:sample} zeigt einen Beispielalgorithmus.
 \begin{Algorithmus} %Die Umgebung nur benutzen, wenn man den Algorithmus ähnlich wie Graphiken von TeX platzieren lassen möchte
-\caption{Sample algorithm}
 \label{alg:sample}
+\caption{Sample algorithm}
 \begin{algorithmic}
 \Procedure{Sample}{$a$,$v_e$}
 \State $\mathsf{parentHandled} \gets (a = \mathsf{process}) \lor \mathsf{visited}(a'), (a',c,a) \in \mathsf{HR}$ 
@@ -205,6 +205,9 @@ Definition Text
 
 \Cref{def:def1} zeigt \ldots
 
+\section{Literaturverweise}
+So wird auf eine Quelle~\cite{WSPA} verwiesen und so als Fußnote\footcite{WSPA}. Mit biblatex ist es auf möglich Zitate, z.B. aus dem Artikel von \textcite{WSPA}, direkt in den Textfluss zu integrieren.
+
 \section{Verschiedenes}
 \label{sec:diff}
 \ifdeutsch
@@ -221,4 +224,4 @@ Letzteres erreicht man durch den Parameter \texttt{osf} bei dem Paket \texttt{li
 \end{compactenum}
 
 \section{Weitere Informationen}
-Verbesserungsvorschläge für diese Vorlage sind immer willkommen. Bitte bei github ein Ticket eingragen (\url{https://github.com/latextemplates/USTUTT-computer-science/issues}).
+Verbesserungsvorschläge für diese Vorlage sind immer willkommen. Bitte bei github ein Ticket eingragen (\url{https://github.com/diehlpk/thesis-template/issues}).

@@ -11,7 +11,7 @@ Characteristics
 ---------------
 * UTF-8
 * pdflatex
-* Depends on bibtex (and not to biblatex yet)
+* Depends on biblatex
 
 This template runs at Windows using the current [MiKTeX](http://www.miktex.org) distribution. Linux (TexLive full >= 2012 )should work without any issues. 
 
@@ -48,7 +48,7 @@ Usual LaTeX run
 ---------------
 
     pdflatex ausarbeitung
-    bibtex ausarbeitung
+    biber ausarbeitung
     pdflatex ausarbeitung
     pdflatex ausarbeitung
 

@@ -8,7 +8,7 @@ LITERATURE = bibliography/bibliography.bib
 #latex = pdflatex -shell-escape
 #MiKTeX:
 latex = pdflatex --enable-write18
-bibtex = bibtex
+bibtex = biber
 
 SRC = $(shell basename $(MASTER_TEX) .tex)
 TEX_FILES = $(wildcard preambel/*.tex content/*.tex)
