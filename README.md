@@ -190,14 +190,6 @@ This file.
 
 Bibliography. BibTex format. Manage it with [JabRef](http://jabref.sf.net) or similar BibTeX tooling.
 
-### bibliography/IAAS.bst
-
-BibTeX style file for English bibliographies. Possibly, it can be used for German bibliographies, too.
-
-### bibliography/IAAS.dbj
-
-Source for generating `IAAS.bst` (`latex IAAS.dbj`, requires custombib)
-
 ## content/
 
 Place for the actual content
