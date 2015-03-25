@@ -11,6 +11,7 @@ Characteristics
 ---------------
 * UTF-8
 * pdflatex
+* latexmk
 * Depends on biblatex
 
 This template runs at Windows using the current [MiKTeX](http://www.miktex.org) distribution. Linux (TexLive full >= 2012 )should work without any issues. 
@@ -47,34 +48,12 @@ If you want to include .svg graphics, inkscape has to be in your path.
 Usual LaTeX run
 ---------------
 
-    pdflatex ausarbeitung
-    biber ausarbeitung
-    pdflatex ausarbeitung
-    pdflatex ausarbeitung
+    latexmk -pdf ausarbeitung.tex
 
 Automatic compilation using make
 --------------------------------
 
     make
-
-
-Automatic compilation using texify
-----------------------------------
- 
-    texify -p ausarbeitung.tex
-
-Automatic compilation using latexmk
------------------------------------
-
-    latexmk -pdf ausarbeitung
-
-Continuous previewing using latexmk
------------------------------------
-
-    latexmk -pvc -pdf ausarbeitung
-
-This will open Acrobat Reader once. Close it and start a PDF reader supporting instant reload of PDFs. We recommend [Sumatra PDF](http://blog.kowalczyk.info/software/sumatrapdf/free-pdf-reader-de.html).
-
 
 Make targets
 ============

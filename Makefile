@@ -7,7 +7,7 @@ LITERATURE = bibliography/bibliography.bib
 
 #latex = pdflatex -shell-escape
 #MiKTeX:
-latex = pdflatex --enable-write18
+latex = latexmk 
 bibtex = biber
 
 SRC = $(shell basename $(MASTER_TEX) .tex)
@@ -25,35 +25,15 @@ all: $(PDF)
 .PHONY: $(PDF)
 
 $(PDF): $(TEX_FILES) $(GFX_FILES) $(SRC).bbl
-	$(latex) $(MASTER_TEX)
-	@if grep -q "LaTeX Warning: There were undefined references." $(SRC).log; then \
-		if grep -q "LaTeX Warning: Citation" $(SRC).log; then \
-			$(bibtex) $(SRC); \
-		fi; \
-		$(latex) $(MASTER_TEX); \
-	fi
-	@while grep -q "LaTeX Warning: Label(s) may have changed" $(SRC).log; do \
-		$(latex) $(MASTER_TEX); \
-	done
+	$(latex) -pdf $(MASTER_TEX)
 
-$(SRC).bbl: $(LITERATURE)
-	@if test ! -f $(SRC).aux; then \
-		$(latex) $(MASTER_TEX); \
-	fi
-	$(bibtex) $(SRC)
 
 clean: 
-	@rm -f $(SRC).4ct $(SRC).4tc $(SRC).alg $(SRC).aux $(SRC).bbl $(SRC).blg $(SRC).brf $(SRC).code $(SRC).dvi $(SRC).err $(SRC).glo $(SRC).gls $(SRC).hp \
-	$(SRC).idv $(SRC).lo? $(SRC).log $(SRC).lot $(SRC).out $(SRC).tmp $(SRC).toc $(SRC).tpt $(SRC).lbl $(SRC).idx \
-	$(SRC).ilg $(SRC).ind $(SRC).ps $(SRC).xref $(SRC).code $(SRC).html $(SRC).css $(SRC).lg $(SRC).thm
+	$(latex) -C
 
 # Endversion - mit eingebauter Seitenvorschau
 # mehrere Durchlaeufe, da bei longtable einige runs mehr vonnoeten sind...
 final: $(PDF)
-	$(latex) $(MASTER_TEX)
-	$(latex) $(MASTER_TEX)
-	$(latex) $(MASTER_TEX)
-	$(latex) $(MASTER_TEX)
 	thumbpdf $(PDF)
 	$(latex) $(MASTER_TEX)
 
@@ -69,8 +49,7 @@ view: pdf
 	$(viewer) $(PDF)&
 
 edit:
-	$(viewer) $(PDF)&
-	$(editor) *.tex&
+	$(editor) $(MASTER_TEX)&
 
 6: ps
 	psnup -6 $(SRC).ps > 6.ps
