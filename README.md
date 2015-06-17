@@ -14,7 +14,7 @@ Characteristics
 * latexmk
 * Depends on biblatex
 
-This template runs at Windows using the current [MiKTeX](http://www.miktex.org) distribution. Linux (TexLive full >= 2012 )should work without any issues. 
+This template runs at Windows using the current [MiKTeX](http://www.miktex.org) distribution. Linux (TexLive full >= 2013 )should work without any issues. 
 
 Using with your git repository
 ==============================
