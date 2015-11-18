@@ -37,22 +37,6 @@ x = y
 
 Eine ausführliche Anleitung zum Mathematikmodus von LaTeX findet sich in \url{http://www.ctan.org/tex-archive/help/Catalogue/entries/voss-mathmode.html}.
 
-\section{Quellcode}
-Listing~\ref{lst:ListingANDlstlisting} zeigt, wie man Programmlistings einbindet.  Mittels \texttt{\textbackslash lstinputlisting} kann man den Inhalt direkt aus Dateien lesen.
-
-%Listing-Umgebung wurde durch \newfloat{Listing} definiert
-\begin{Listing}
-\begin{lstlisting}
-<listing name="second sample">
-  <content>not interesting</content>
-</listing>
-\end{lstlisting}
-\caption{lstlisting in einer Listings-Umgebung, damit das Listing durch Balken abgetrennt ist}
-\label{lst:ListingANDlstlisting}
-\end{Listing}
-
-Quellcode im \lstinline|<listing>| ist auch möglich.
-
 \section{Abbildungen}
 Die Abbildungen~\ref{fig:chor1} und~\ref{fig:chor2} sind für das Verständnis dieses Dokuments
 wichtig. Im Anhang zeigt Abbildung~\vref{fig:AnhangsChor} erneut die komplette Choreographie.
@@ -150,27 +134,10 @@ $
 \end{algorithmic}
 \end{Algorithmus}
 
-\clearpage
-Und wer einen Algorithmus schreiben möchte, der über mehrere Seiten geht, der kann das nur mit folgendem \textbf{üblen} Hack tun:
+\newpage
+\section{Quellcode}
+\lstinputlisting[language=C++,label=helloworld,caption={"`hello world"' in C++.}]{code/helloworld.cpp}
 
-{
-\begin{minipage}{\textwidth}
-\hrule height .8pt width\textwidth
-\vskip.15em%\vskip\abovecaptionskip\relax
-\stepcounter{Algorithmus}
-\addcontentsline{alg}{Algorithmus}{\protect\numberline{\theAlgorithmus}{\ignorespaces Description \relax}}
-\noindent\textbf{Algorithmus \theAlgorithmus} Description
-%\stepcounter{algorithm}
-%\addcontentsline{alg}{Algorithmus}{\thealgorithm{}\hskip0em Description}
-%\textbf{Algorithmus \thealgorithm} Description
-\vskip.3em%\vskip\belowcaptionskip\relax
-\hrule height .5pt width\textwidth
-\end{minipage}
-code goes here\\
-test2\\
-\vskip-.9em
-\hrule height .5pt width\textwidth
-}
 
 \section{Verweise}
 Für weit entfernte Abschnitte ist \enquote{varioref} zu empfehlen:
