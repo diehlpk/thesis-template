@@ -24,7 +24,7 @@ date=$(shell date +%Y%m%d%H%M)
 all: $(PDF)
 .PHONY: $(PDF)
 
-$(PDF): $(TEX_FILES) $(GFX_FILES) $(SRC).bbl
+$(PDF): $(TEX_FILES)
 	$(latex) -pdf $(MASTER_TEX)
 
 
