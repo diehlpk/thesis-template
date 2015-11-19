@@ -206,5 +206,24 @@ TikZ ist ein Paket um Zeichnungen mittels Programmierung zu erstellen. Dieses Pa
 \end{figure}
 }{}
 
+
+\IfFileExists{pgfplots.sty}{
+\section{Plots with pgfplots}
+Pgfplot ist ein Paket um Graphen zu plotten ohne den Umweg \"ueber gnuplot oder matplotlib zu gehen. 
+\begin{figure}[t]
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[xlabel=$x$,
+               ylabel=$\sin(x)$]
+    \addplot {sin(deg(x))};  % Sinus-Funktion zeichnen
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+\caption{$\sin(x)$ mit pgfplots.}
+\end{figure}
+}{}
+
+
+
 \section{Weitere Informationen}
 Verbesserungsvorschläge für diese Vorlage sind immer willkommen. Bitte bei github ein Ticket eingragen (\url{https://github.com/diehlpk/thesis-template/issues}).

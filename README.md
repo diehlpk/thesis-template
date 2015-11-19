@@ -67,37 +67,12 @@ Automatic compilation using make
 Make targets
 ============
 
-For those, who have [cygwin](http://www.cygwin.com/) installed or run a linux machine, this template offers a simple LaTeX makefile. It is not so sophisticated as other projects, but does its job
-
-pdf (default)
--------------
-
-Generates ausarbeitung.pdf
-
-aspell
-------
-
-Checks all files using aspell.
-
-clean
------
-
-Removes all temporary files.
-
-mrproper
---------
-
-Cleans up and removes also editor backup files.
-
-stand
------
-
-Creates a new PDF with the current status of the thesis.
-
-view
-----
-
-Opens the configured viewer
+* pdf (default) - Generates ausarbeitung.pdf
+* aspell - Checks all files using aspell.
+* clean - Removes all temporary files.
+* mrproper - Cleans up and removes also editor backup files.
+* stand - Creates a new PDF with the current status of the thesis.
+* view - Opens the configured viewer
 
 Alternatives
 ------------
