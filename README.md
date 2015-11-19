@@ -45,7 +45,7 @@ The template is compiled using normal LaTeX commands.
 
 If you want to include .svg graphics, inkscape has to be in your path.
 
-Usual LaTeX run
+Usual LaTeX run (latemk)
 ---------------
 
     latexmk -pdf ausarbeitung.tex
@@ -89,11 +89,6 @@ view
 ----
 
 Opens the configured viewer
-
-6
--
-
-Generates a 3x2 postscriptfile using psnup.
 
 Alternatives
 ------------

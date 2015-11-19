@@ -12,7 +12,6 @@ bibtex = biber
 
 SRC = $(shell basename $(MASTER_TEX) .tex)
 TEX_FILES = $(wildcard preambel/*.tex content/*.tex)
-GFX_FILES = $(wildcard graphics/*)
 
 PDF = $(SRC).pdf
 AUX = $(SRC).aux
@@ -40,10 +39,8 @@ final: $(PDF)
 mrproper: clean
 	rm -f *~
 
-ps: $(PDF)
-	pdftops $(PDF)
-
 pdf: $(PDF)
+	latexmk -pdf ${MASTER_TEX}
 
 view: pdf
 	$(viewer) $(PDF)&
@@ -51,26 +48,12 @@ view: pdf
 edit:
 	$(editor) $(MASTER_TEX)&
 
-6: ps
-	psnup -6 $(SRC).ps > 6.ps
-
 stand: $(PDF)
 	cp $(PDF) "Ausarbeitung - Stand $(date).pdf"
-
-standps: ps
-	psnup -2 $(SRC).ps > "Ausarbeitung - Stand $(date).ps"
-
-##
-# Das ganze am Besten vor der final und als eigene Version ala make spellcheck
-# aspell line: aspell -t -l de_DE -d german -c --per-conf= "Dateiname" *.tex -T utf-8 --encoding=utf-8
-# Schreiben der LaTeX-Befehle in eine config Dateiname. Sieht so aus
-# add-tex-command begin PO // PO := prüfe []{} ;; po := ignoriere []{}
-# Leerzeichen ungleich Tabs !!!
-# Config File nicht vergessen
 aspell: 
 	for tex in $(TEX_FILES);	\
 		do	\
-			aspell -t -l de_DE -d german -T utf-8 -c $$tex --encoding=utf-8;	\
+			aspell -t -l de_DE -T utf-8 -c $$tex --encoding=utf-8;	\
 		done
 #
 ##
