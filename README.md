@@ -50,6 +50,15 @@ Usual LaTeX run (latemk)
 
     latexmk -pdf ausarbeitung.tex
 
+### latexmk configuration
+This repository ships a `.latexmk` which is read by latexmk.
+It is configured for Windows and especially sets Sumatra PDF as default PDF viewer.
+You can make this local configuration a global configuration, when you put it at [the right place](http://tex.stackexchange.com/a/41149/9075).
+
+If you want to add more packages, configure it there.
+For instance, for support of makeglossaries see http://tex.stackexchange.com/questions/1226/how-to-make-latexmk-use-makeglossaries.
+
+
 Automatic compilation using make
 --------------------------------
 
