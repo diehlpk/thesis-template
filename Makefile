@@ -64,5 +64,5 @@ html: clean pdf
 #Fügt den Style für die Titelseite ein
 fetchtitlebonn:
 	wget http://www.mathematics.uni-bonn.de/files/bachelor/ba_titelseite.zip
-	unzip -p ba_titelseite.zip BA_Titelseite/BA_Titelseite.sty > BA_Titelseite.sty
+	unzip -p ba_titelseite.zip BA_Titelseite_2014/BA_Titelseite.sty > BA_Titelseite.sty
 
