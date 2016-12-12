@@ -19,38 +19,31 @@
 %
 %%%
 
-%%%
-% Codierung
-% Wir sind im 21 Jahrhundert, utf-8 löst so viele Probleme.
-%
-% Mit UTF-8 funktionieren folgende Pakete nicht mehr. Bitte beachten!
-%   * fancyvrb mit § 
-%   * easylist -> http://www.ctan.org/tex-archive/macros/latex/contrib/easylist/ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Typesetting
 \usepackage[utf8]{inputenc}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Parallelbetrieb tex4ht und pdflatex
 \makeatletter
 \@ifpackageloaded{tex4ht}{\def\iftex4ht{\iftrue}}
                          {\def\iftex4ht{\iffalse}}
 \makeatother
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-%Farbdefinitionen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Definition of colors
 \usepackage[hyperref,dvipsnames]{xcolor}
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Biblatex
 \usepackage[style=alphabetic,backref=true,backend=biber]{biblatex}
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
-% Neue deutsche Rechtschreibung und Literatur statt "Literature", Nachfolger von ngerman.sty
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add language support for German
 \ifdeutsch
 \usepackage[ngerman]{babel}
   %Ein "abstract" ist eine "Kurzfassung", keine "Zusammenfassung"
@@ -59,9 +52,7 @@
   }
 \else
 %
-%
-% if you are writing in english
-% für englische Texte, Hinweise zu weiteren, notwendigen Umstellungen in README.txt beachten
+% Add langauge support for English
 \usepackage[american]{babel}
 \fi
 %
@@ -70,31 +61,29 @@
 %%%
 % Usage of typesetting values with SI units.
 \usepackage{siunitx}
-%%%
-%%%
-% Anführungszeichen
-% Zitate in \enquote{...} setzen, dann werden automatisch die richtigen Anführungszeichen verwendet.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Quotes
+% Use the \enquote{...} environment for quations to ge the right quote signs
 \usepackage{csquotes}
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%
-% erweitertes Enumerate
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Addition for enumerations
 \usepackage{paralist}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%
-% fancyheadings (nicht nur) fuer koma
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fancyheadings 
 \usepackage[automark]{scrpage2} 
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-%Mathematik
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Mathematics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[fleqn,leqno]{amsmath} % Viele Mathematik-Sachen: Doku: /usr/share/doc/texmf/latex/amsmath/amsldoc.dvi.gz
 %fleqn (=Gleichungen linksbündig platzieren) funktioniert nicht direkt. Es muss noch ein Patch gemacht werden:
 \addtolength\mathindent{1em}%work-around ams-math problem with align and 9 -> 10
@@ -107,35 +96,27 @@
 \theoremstyle{break}
 \newtheorem{definition}{Definition}[section]
 %
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-% Intelligentes Leerzeichen um hinter Abkürzungen die richtigen Abstände zu erhalten, auch leere.
-% siehe commands.tex \gq{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Support of different types of spacings
 \usepackage{xspace}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-% Anhang
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Package for the appendix
 \usepackage{appendix}
 %[toc,page,title,header]
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-% Grafikeinbindungen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Grahpics
 \usepackage{graphicx}%Parameter "pdftex" unnoetig
 \graphicspath{{\getgraphicspath}}
 \newcommand{\getgraphicspath}{graphics/}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Enables inclusion of SVG graphics - 1:1 approach
 % This is NOT the approach of http://www.ctan.org/tex-archive/info/svg-inkscape,
 % which allows text in SVG to be typeset using LaTeX
@@ -144,11 +125,9 @@
 \epstopdfDeclareGraphicsRule{.svg}{pdf}{.pdf}{%
   inkscape -z -D --file=#1 --export-pdf=\OutputFile
 }
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Enables inclusion of SVG graphics - text-rendered-with-LaTeX-approach
 % This is the approach of http://www.ctan.org/tex-archive/info/svg-inkscape,
 \newcommand{\executeiffilenewer}[3]{%
@@ -176,73 +155,44 @@ inkscape -z -D --file=\getgraphicspath#1.svg %
 --export-pdf=\getgraphicspath#1.pdf --export-latex}%
 \input{\getgraphicspath#1.pdf_tex}%
 }
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
-% Tabellenerweiterungen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Extensions for tables
 \usepackage{array} %increases tex's buffer size and enables ``>'' in tablespecs
 \usepackage{longtable}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Eine Zelle, die sich über mehrere Zeilen erstreckt.
 % Siehe Beispieltabelle in Kapitel 2
 \usepackage{multirow}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%
-% Links verhalten sich so, wie sie sollen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Support of hyperlinks
 \usepackage{url}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Logical cases provided in Tex
+\usepackage{ifthen} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%
-% Index über Begriffe, Abkürzungen
-%\usepackage{makeidx} makeidx ist out -> http://xindy.sf.net verwenden
-%
-%%%
-
-%%%
-%lustiger Hack fuer das Abkuerzungsverzeichnis
-%nach latex durchlauf folgendes ausfuehren
-%makeindex ausarbeitung.nlo -s nomencl.ist -o ausarbeitung.nls 
-%danach nochmal latex
-%\usepackage{nomencl}
-%	\let\abk\nomenclature %Deutsche Ueberschrift setzen
-%	  	\renewcommand{\nomname}{List of Abbreviations}
-%		%Punkte zw. Abkuerzung und Erklaerung
-%	  	\setlength{\nomlabelwidth}{.2\hsize}
-%	  	\renewcommand{\nomlabel}[1]{#1 \dotfill}
-%		%Zeilenabstaende verkleinern
-%	  	\setlength{\nomitemsep}{-\parsep}
-%	\makenomenclature
-%
-%%%
-
-%%%
-% Logik für Tex
-\usepackage{ifthen} %fuer if-then-else @ commands.tex
-%
-%%%
-
-
-%%%
-% unterschiedliche Fancy-Chapter-Styles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Different fancy styles for the chapter
 %\usepackage[Bjarne]{fncychap}
 %\usepackage[Lenny]{fncychap}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Package for listing source code
 \usepackage{scrhack}
 \usepackage{listings}
 
+%Definitions for the colors, etc
 \lstset{                                       
         language=C,                            
         basicstyle=\footnotesize\ttfamily,    
@@ -269,99 +219,71 @@ inkscape -z -D --file=\getgraphicspath#1.svg %
         showstringspaces=false                
 }
 
-%
-%%%
+\lstset{language=XML,
+        showstringspaces=false,
+        extendedchars=true,
+        basicstyle=\footnotesize\ttfamily,
+        commentstyle=\slshape,
+        stringstyle=\ttfamily,  
+        breaklines=true,
+        breakatwhitespace=true,
+        columns=flexible,
+        aboveskip=0mm,
+        belowskip=0mm, 
+        captionpos=b
+}
 
+\ifdeutsch
+\renewcommand{\lstlistlistingname}{Verzeichnis der Listings}
+\fi
 
-%%%
-%Alternative zu Listings ist fancyvrb. Kann auch beides gleichzeitig benutzt werden.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Alternative to Listings could be fancyvrb. Can be used next to each other
 \usepackage{fancyvrb}
-%\fvset{fontsize=\small} %Groesse fuer den Fliesstext. Falls deaktiviert: \normalsize
-%Funktioniert mit UTF-8 nicht mehr
-%\DefineShortVerb{\§} %Somit kann im Text ganz einfach |verbatim| text gesetzt werden.
 \RecustomVerbatimEnvironment{Verbatim}{Verbatim}{fontsize=\footnotesize}
 \RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{fontsize=\footnotesize}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-% Bildunterschriften bei floats genauso formatieren wie bei Listings
-% Anpassung wird unten bei den newfloat-Deklarationen vorgenommen
-% Caption2 vielleicht besser
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Provides captions for the figures, algorithms...
 \usepackage{caption}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-% Ermoeglicht es, Abbildungen um 90 Grad zu drehen
-% Alternatives Paket: rotating Allerdings wird hier nur das Bild gedreht, während bei lscape auch die PDF-Seite gedreht wird. 
-%Das Paket lscape dreht die Seite auch nicht 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Provides rotating figures 
 \usepackage{pdflscape}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fuer listings
-% Wird für fancyvrb und für lstlistings verwendet
-% zustäzlich für den Paramter [H] = Floats WIRKLICH da wo sie deklariert wurden paltzieren - ganz ohne Kompromisse
-% floatrow ist der Nachfolger von float
 \iftex4ht
 \usepackage{float}
 \else
 %tex4ht is not compatible with the advanced floatrow package
 \usepackage{floatrow}
 \fi
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-% Fuer Abbildungen innerhalb von Abbildungen
-% Ersetzt das Paket subfigure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Provides nested figures
 %\usepackage{subfig}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-%Fuer Tabellen mit Variablen Spaltenbreiten
-%\usepackage{tabularx}
-%\usepackage{tabulary}
-%
-%%%
-
-
-%%%
-% Fußnoten
-% 
-%\usepackage{dblfnote}  %Zweispaltige Fußnoten
-%
-% Keine hochgestellten Ziffern in der Fußnote (KOMA-Script-spezifisch):
-%\deffootnote[1.5em]{0pt}{1em}{\makebox[1.5em][l]{\bfseries\thefootnotemark}} 
-%
-% Abstand zwischen Fußnoten vergrößern:
-%\setlength{\footnotesep}{.85\baselineskip}
-%
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Provides footnotes
 \renewcommand{\footnoterule}{}             % Keine Trennlinie zur Fußnote 
 \addtolength{\skip\footins}{\baselineskip} % Abstand Text <-> Fußnote
 % Fußnoten immer ganz unten auf einer \raggedbottom-Seite
 \usepackage{fnpos}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\raggedbottom     % Variable page heights
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
-%
-\raggedbottom     % Variable Seitenhöhen zulassen
-%
-%%%
-
-
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Falls die Seitenzahl bei einer Referenz auf eine Abbildung nur dann angegeben werden soll,
 % falls sich die Abbildung nicht auf der selben Seite befindet...
 \iftex4ht
@@ -374,74 +296,32 @@ inkscape -z -D --file=\getgraphicspath#1.svg %
 \usepackage{varioref}
 \fi
 \fi
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
-% Noch schoenere Tabellen als mit booktabs mit http://www.zvisionwelt.de/downloads.html
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% More extensions for tables
 \usepackage{booktabs} 
-%
 %\usepackage[section]{placeins}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-%Fuer Graphiken. Allerdings funktioniert es nicht zusammen mit pdflatex
-%\usepackage{gastex} % \tolarance kann dann nicht mehr umdefiniert werden
-%
-%%%
-
-
-%%%
-%
-%\usepackage{multicol}
-%\usepackage{setspace} % kollidiert mit diplomarbeit.sty
-%
-%http://www.tex.ac.uk/cgi-bin/texfaq2html?label=floats
-%\usepackage{flafter} %floats IMMER nach ihrer Deklaration platzieren
-%
-%%%
-
-
-%%%
-%schoene TODOs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Provides todo notes
 \usepackage{todonotes}
 \let\xtodo\todo
 \renewcommand{\todo}[1]{\xtodo[inline,color=black!5]{#1}}
 \newcommand{\utodo}[1]{\xtodo[inline,color=green!5]{#1}}
 \newcommand{\itodo}[1]{\xtodo[inline]{#1}}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-% Neue Pakete bitte VOR hyperref einbinden. Insbesondere bei Verwendung des
-% Pakets "index" wichtig, da sonst die Referenzierung nicht funktioniert.
-% Für die Indizierung selbst ist unter http://xindy.sourceforge.net
-% ein gutes Tool zu erhalten 
-%%%
-
-
-%%%
-%
-% hier also neue packages einbinden
-%
-%%%
-
-
-%%%
-% ggf.in der Endversion komplett rausnehmen. dann auch \href in commands.tex aktivieren
-% Alle Optionen nach \hypersetup verschoben, sonst crash
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Hyperlinks
 \usepackage[]{hyperref}%siehe auch: "Praktisches LaTeX" - www.itp.uni-hannover.de/~kreutzm
-%
-%% Da es mit KOMA 3 und xcolor zu Problemen mit den global Options kommt MÜSSEN die Optionen so gesetzt werden.
-%
 
-% Eigene Farbdefinitionen ohne die Namen des xcolor packages
+%Own definition of colors
 \definecolor{darkblue}{rgb}{0,0,.5}
 \definecolor{black}{rgb}{0,0,0}
 
+%Define color of hyperlinks...
 \hypersetup{
 	breaklinks=true,
 	bookmarksnumbered=true,
@@ -457,64 +337,44 @@ inkscape -z -D --file=\getgraphicspath#1.svg %
 	linkcolor=black,
 	citecolor=black
 }
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-% cleveref für cref statt autoref, da cleveref auch bei Definitionen funktioniert
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Extensions for references
 \ifdeutsch
 \usepackage[ngerman,capitalise,nameinlink]{cleveref}
 \else
 \usepackage[capitalise,nameinlink]{cleveref}
 \fi
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-% Zur Darstellung von Algorithmen
-% Algorithm muss nach hyperref geladen werden
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Provides environments for peseudo code
 \usepackage[chapter]{algorithm} 
 \usepackage[]{algpseudocode}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-% Schriften
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonts
 \input{preambel/fonts}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Links auf Gleitumgebungen springen nicht zur Beschriftung,
 % Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/oberdiek/hypcap.pdf
 % sondern zum Anfang der Gleitumgebung
 \usepackage[all]{hypcap}
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-% Deckblattstyle
-%
-% TODO
-%
-%%%
-
-%%%
-% Rand
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Specification of the boarder
 \input{preambel/margins}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
-% Optionen                                                                  
-%
-%Skip=0 funktioniert nicht
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Settings for the chapter package
 \captionsetup{format=hang,labelfont=bf,justification=justified,singlelinecheck=false,skip=0pt}
-%
-%neue float Umgebung fuer Listings, die mittels fancyvrb gesetzt werden sollen
+
 \floatstyle{ruled}
 \newfloat{Listing}{tbp}{code}[chapter]
 \newfloat{Algorithmus}{tbp}{alg}[chapter]
@@ -532,14 +392,10 @@ inkscape -z -D --file=\getgraphicspath#1.svg %
 %
 \input{preambel/chapterheads}
 %
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-%Minitoc-Einstellungen
-%\dominitoc
-%\renewcommand{\mtctitle}{Inhaltsverzeichnis dieses Kapitels}
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Settings for minitoc
 % Disable single lines at the start of a paragraph (Schusterjungen)
 \clubpenalty = 10000
 %
@@ -547,95 +403,52 @@ inkscape -z -D --file=\getgraphicspath#1.svg %
 \widowpenalty = 10000 \displaywidowpenalty = 10000
 %
 %http://groups.google.de/group/de.comp.text.tex/browse_thread/thread/f97da71d90442816/f5da290593fd647e?lnk=st&q=tolerance+emergencystretch&rnum=5&hl=de#f5da290593fd647e
-%Mehr Infos unter http://www.tex.ac.uk/cgi-bin/texfaq2html?label=overfull
+%For more details see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=overfull
 \tolerance=2000
 \setlength{\emergencystretch}{3pt}   % kann man evtl. auf 20 erhoehen
 \setlength{\hfuzz}{1pt}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-% Fuer listings.sty
-\lstset{language=XML,
-        showstringspaces=false,
-        extendedchars=true,
-        basicstyle=\footnotesize\ttfamily,
-        commentstyle=\slshape,
-        stringstyle=\ttfamily, %Original: \rmfamily, damit werden die Strings im Quellcode hervorgehoben		zusaetzlich evtl.: \scshape oder \rmfamily durch \ttfamily ersetzen. Dann sieht's aus, wie bei fancyvrb
-        breaklines=true,
-        breakatwhitespace=true,
-        columns=flexible,
-        aboveskip=0mm, %deaktivieren, falls man lstlistings direkt als floating object benutzt (\begin{lstlisting}[float,...])
-        belowskip=0mm, %deaktivieren, falls man lstlistings direkt als floating object benutzt (\begin{lstlisting}[float,...])
-        captionpos=b
-}
-\ifdeutsch
-\renewcommand{\lstlistlistingname}{Verzeichnis der Listings}
-\fi
-%
-%%%
-
-
-%%%
-%fuer algorithm.sty: - falls Deutsch und nicht Englisch. Falls Englisch als Sprache gewählt wurde, bitte die folgenden beiden Zeilen auskommentieren.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Change name of algorithms to German
 \floatname{algorithm}{Algorithmus}
 \ifdeutsch
 \renewcommand{\listalgorithmname}{Verzeichnis der Algorithmen}
 \fi
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-% Das Euro Zeichen 
-% Fuer Palatino (mathpazo.sty): richtiges Euro-Zeichen
-% Alternative: \usepackage{eurosym}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Provides the euro symbol
 \newcommand{\EUR}{\ppleuro}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Float-placements - http://dcwww.camd.dtu.dk/~schiotz/comp/LatexTips/LatexTips.html#figplacement
 % and http://people.cs.uu.nl/piet/floats/node1.html
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\bottomfraction}{0.95}
 \renewcommand{\textfraction}{0.1}
 \renewcommand{\floatpagefraction}{0.75}
-%\setcounter{totalnumber}{5}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
-%
-% Bei Gleichungen nur dann die Nummer zeigen, wenn die Gleichung auch referenziert wird
-%
-% Funktioniert mit MiKTeX Stand 2012-01-13 nicht. Deshalb ist dieser Schalter deaktiviert.
-%
-%\mathtoolsset{showonlyrefs}
-%
-%%%
-
-%%%
-%Optischer Randausgleich
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Improvements at the boarder of the pages
 \usepackage{microtype}
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % tikz (optional if the ppackage is installed)
+% Package for creating graphics programmatically
 \IfFileExists{tikz.sty}{
 \usepackage{tikz}
 }{}
-%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % pgfplots (optional if the ppackage is installed)
+% PGFPlots draws high-qual­ity func­tion plots in nor­mal or log­a­rith­mic scal­ing
 \IfFileExists{pgfplots.sty}{
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.12}
 }{}
-%%%%
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
