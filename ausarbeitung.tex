@@ -1,26 +1,26 @@
-% Dieses Dokument muss mit PDFLatex geestzt werden
-% Vorteil: Grafiken koennen als jpg, png, ... verwendet werden
-%          und die Links im Dokument sind auch gleich richtig
+% This document should be gnerated with pdflatex
+% Advantages: Figures can be provided aa jpg, png, ... 
+%          and the links inside the document work directly
 %
-%Ermöglicht \\ bei der Titelseite (z.B. bei supervisor)
-%Siehe https://github.com/latextemplates/uni-stuttgart-cs-cover/issues/4
+
+%See https://github.com/latextemplates/uni-stuttgart-cs-cover/issues/4
 \RequirePackage{kvoptions-patch}
 %
 \documentclass[
                a4paper,
-%               twoside, % fuer die Betrachtung am Schirm ungeschickt
+%               twoside, % Use this option before printing the document
 % Optionen fuer typearea.
-               BCOR1.92mm,DIV11,headinclude, %je höher der DIV-Wert, desto mehr geht auf eine Seite - Hack für BCOR. Bei BCOR2mm sind die Fuellpunkte beim Inhaltsverzeichnis falsch
+               BCOR1.92mm,DIV11,headinclude, %With a higher DIC value more content fits on a page
 %               titlepage,
                bibliography=totoc,
-%               idxtotoc,   %Index ins Inhaltsverzeichnis
-%				liststotoc, %List of X ins Inhaltsverzeichnis, mit liststotocnumbered werden die Abbildungsverzeichnisse nummeriert
+%               idxtotoc,   %Adds Index to the table of content
+%				liststotoc, %List of X to the table of content
                headsepline,
                cleardoublepage=empty,
                parskip=half,
-%				pointlessnumbers, %f"ur englische Texte, dann unten \ifdeutsch und \ifenglisch anpassen.
+%				pointlessnumbers, %Enable this attribute for the english version
 %               draft    % um zu sehen, wo noch nachgebessert werden muss - wichtig, da Bindungskorrektur mit drin
-               final   % ACHTUNG! - in pagestyle.tex noch Seitenstil anpassen
+               final   % Caution! - change the page style here too pagestyle.tex 
                ]{scrbook}
 
 %Englisch:			   
@@ -31,7 +31,9 @@
 \let\ifdeutsch\iftrue
 \let\ifenglisch\iffalse
 
-			   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Include packages and set options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{preambel/packages_and_options}
 
 %\input{titlePageBonn}
@@ -41,30 +43,33 @@
  %Der untere Rand darf "flattern"
 \raggedbottom
 
-%%%
-% Wie tief wird das Inhaltsverzeichnis aufgeschlüsselt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Depth of table of contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 0 --\chapter
-% 1 --\section % fuer kuerzeres Inhaltsverzeichnis verwenden - oder minitoc benutzen
+% 1 --\section 
 % 2 --\subsection
 % 3 --\subsubsection
 % 4 --\paragraph
 \setcounter{tocdepth}{1}
-%
-%%%
 
 \makeindex
 
-%Angaben in die PDF-Infos uebernehmen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Set the attributes for the pdf information
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \makeatletter
 \hypersetup{
-            pdftitle={}, %Titel der Arbeit
+            pdftitle={}, %Titel of the thesis
             pdfauthor={}, %Author
-            pdfkeywords={}, % CR-Klassifikation und ggf. weitere Stichworte
+            pdfkeywords={}, % CR-Classifications
             pdfsubject={}
 }
 \makeatother
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Path to the biliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliography{bibliography/bibliography} 
 
 
@@ -89,30 +94,22 @@
          }  
 \fi
 
-%Tipp von http://goemonx.blogspot.de/2012/01/pdflatex-ligaturen-und-copynpaste.html
-%siehe auch http://tex.stackexchange.com/questions/4397/make-ligatures-in-linux-libertine-copyable-and-searchable
-%
-%ONLY WORKS ON MiKTeX
-%On other systems, download glyphtounicode.tex from http://pdftex.sarovar.org/misc/
-%
-\input glyphtounicode.tex
-\pdfgentounicode=1
-
-\VerbatimFootnotes %verbatim text in Fußnoten erlauben. Geht normalerweise nicht.
+\VerbatimFootnotes %Provides vaerbatim in footnotes
 %\frontmatter
 \input{macros/commands}
 \pagenumbering{arabic}
 
 %TODO: \Titelblatt
 
-%Eigener Seitenstil fuer die Kurzfassung und das Inhaltsverzeichnis
+%Own page style for the abstract and the table of contents
 \deftripstyle{preamble}{}{}{}{}{}{\pagemark}
-%Doku zu deftripstyle: scrguide.pdf
+%Dokumentation: scrguide.pdf
 \pagestyle{preamble}
 \renewcommand*{\chapterpagestyle}{preamble}
 
-%Kurzfassung / abstract
-%auch im Stil vom Inhaltsverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Abstract
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifdeutsch
 \section*{Kurzfassung}
 \else
@@ -121,30 +118,18 @@
 \ldots ... Short summary of the thesis ...
 \cleardoublepage
 
-
-% BEGIN: Verzeichnisse
-
 \iftex4ht
 \else
 \microtypesetup{protrusion=false}
 \fi
 
-%%%
-% Literaturverzeichnis ins TOC mit aufnehmen, aber nur wenn nichts anderes mehr hilft!
-% \addcontentsline{toc}{chapter}{Literaturverzeichnis}
-%
-% oder zB
-%\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
-%\section*{Abkürzungsverzeichnis}
-%
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Lists
 
-%Inhaltsverzeichnis anlegen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Table of contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents
-
-% Bei einem ungünstigen Seitenumbruch im Inhaltsverzeichnis, kann dieser mit
-% \addtocontents{toc}{\protect\newpage}
-% an der passenden Stelle im Fließtext erzwungen werden.
 
 %listof* untereinandergesetzt
 %ACHTUNG! Falls ein anderer Kapitelstil gewählt wird, muss der Code hier evtl.
@@ -176,21 +161,28 @@
   }}
 \makeatother
 \let\cleardoublepage\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \listoffigures
 \let\cleardoublepage\relax
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \listoftables
 
-%Wird nur bei Verwendung von der lstlisting-Umgebung mit dem "caption"-Parameter benoetigt
-%\lstlistoflistings 
-%ansonsten:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%List of listings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifdeutsch
 \listof{Listing}{Verzeichnis der Listings}
 \else
 \listof{Listing}{List of Listings}
 \fi
 
-%mittels \newfloat wurde die Algorithmus-Gleitumgebung definiert.
-%Mit folgendem Befehl werden alle floats dieses Typs ausgegeben
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%List of algorithms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifdeutsch
 \listof{Algorithmus}{Verzeichnis der Algorithmen}
 \else
@@ -208,32 +200,33 @@
 \microtypesetup{protrusion=true}
 \fi
 
-% END: Verzeichnisse
-
-
 \renewcommand*{\chapterpagestyle}{scrplain}
 \pagestyle{scrheadings}
 \input{preambel/pagestyle}
-%
-%
-% ** Hier wird der Text eingebunden **
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{content/einleitung}
-%\input{...weitere Kapitel...}
 \input{content/kapitel2}
 \input{content/zusammenfassung_und_ausblick}
-%
-%
-%\renewcommand{\appendixtocname}{Anhang}
-%\renewcommand{\appendixname}{Anhang}
-%\renewcommand{\appendixpagename}{Anhang}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifdeutsch
+\renewcommand{\appendixtocname}{Anhang}
+\renewcommand{\appendixname}{Anhang}
+\renewcommand{\appendixpagename}{Anhang}
+\fi
 \appendix
 \input{content/anhang}
-%\printindex
-%\bibliographystyle{alphadin}
 
-%\bibliography{bibliography/bibliography}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \printbibliography 
 \ifdeutsch
 Alle URLs wurden zuletzt am 17.\,03.\,2008 geprüft.
@@ -242,7 +235,9 @@ All links were last followed on March 17, 2008.
 \fi
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Backmatter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \backmatter 
 \pagestyle{empty}
 \renewcommand*{\chapterpagestyle}{empty}

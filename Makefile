@@ -18,8 +18,6 @@ AUX = $(SRC).aux
 
 date=$(shell date +%Y%m%d%H%M)
 
-# was wird gemacht, falls nur make aufgerufen wird
-#hier sollte noch der aspell check rein für jedes file einzeln über for schleife
 all: $(PDF)
 .PHONY: $(PDF)
 
@@ -30,8 +28,6 @@ $(PDF): $(TEX_FILES)
 clean: 
 	$(latex) -C
 
-# Endversion - mit eingebauter Seitenvorschau
-# mehrere Durchlaeufe, da bei longtable einige runs mehr vonnoeten sind...
 final: $(PDF)
 	thumbpdf $(PDF)
 	$(latex) $(MASTER_TEX)
@@ -61,7 +57,7 @@ aspell:
 html: clean pdf
 	rm $(AUX)
 	htlatex $(SRC)
-#Fügt den Style für die Titelseite ein
+
 fetchtitlebonn:
 	wget http://www.mathematics.uni-bonn.de/files/bachelor/ba_titelseite.zip
 	unzip -p ba_titelseite.zip BA_Titelseite_2014/BA_Titelseite.sty > BA_Titelseite.sty

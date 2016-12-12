@@ -91,8 +91,8 @@ The template has been built primarily for German documents. English documents, h
 
 Two steps to switch to English typesetting:
 
-1. `ausarbeitung.tex`: Right on top: remove the `%` before `pointlessnumbers` (line 17)
-1. `ausarbeitung.tex`: Exchange commands `\ifdeutsch` and `\ifenglisch`. (Lines 23,23 <-> 27,28).
+1. `ausarbeitung.tex`: Right on top: remove the `%` before `pointlessnumbers` 
+1. `ausarbeitung.tex`: Exchange commands `\ifdeutsch` and `\ifenglisch`. 
 1. Cleanup everything (e.g., `make clean`). Otherwise pdflatex will complain because of `ngerman`.
 
 Change Appearance of Chapter Headings
